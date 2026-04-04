@@ -10,7 +10,7 @@ Based in Sydney 🇦🇺 · Currently at Westpac · Background in low-latency tr
 
 | Project | What | |
 |---------|------|---|
-| [**NetWatch**](https://github.com/matthart1983/netwatch) | Real-time network diagnostics TUI — "htop for your network" | ![Stars](https://img.shields.io/github/stars/matthart1983/netwatch?style=flat) |
+| [**NetWatch**](https://github.com/matthart1983/netwatch) | Real-time network diagnostics in your terminal. One command, zero config, instant visibility. | ![Stars](https://img.shields.io/github/stars/matthart1983/netwatch?style=flat) |
 | [**Velocitas FIX Engine**](https://github.com/matthart1983/velocitas-fix-engine) | Ultra-low-latency FIX protocol engine — 28 ns serialize, 2.25M msg/s, 29× faster than QuickFIX/J | |
 | [**PulseDB**](https://github.com/matthart1983/pulsedb) | Time-series database with columnar storage, Gorilla compression & custom query languages | |
 | [**Neo**](https://github.com/matthart1983/neo) | Agentic AI dev platform — multi-model routing via OpenRouter | |

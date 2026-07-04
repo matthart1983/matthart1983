@@ -10,20 +10,21 @@ Based in Sydney 🇦🇺 · Currently at Westpac · Background in low-latency tr
 
 | Project | What | Stars |
 |---------|------|-------|
-| [**NetWatch**](https://github.com/matthart1983/netwatch) | Real-time network diagnostics in your terminal. One command, zero config, instant visibility. | [![Stars](https://img.shields.io/github/stars/matthart1983/netwatch?style=flat)](https://github.com/matthart1983/netwatch/stargazers) |
+| [**NetWatch**](https://github.com/matthart1983/netwatch) | Real-time network diagnostics in your terminal. One command, zero config, instant visibility — eBPF process attribution, TLS forensics, egress policy linting. | [![Stars](https://img.shields.io/github/stars/matthart1983/netwatch?style=flat)](https://github.com/matthart1983/netwatch/stargazers) |
 | [**syswatch**](https://github.com/matthart1983/syswatch) | Real-time system diagnostics in your terminal. Sibling to NetWatch — twelve tabs, plain-English insights, session scrubber. macOS + Linux. | [![Stars](https://img.shields.io/github/stars/matthart1983/syswatch?style=flat)](https://github.com/matthart1983/syswatch/stargazers) |
-| [**netscan**](https://github.com/matthart1983/netscan) | Continuous attack surface monitor — TUI workflow for nmap with scan history, automatic diffing, incident export & AI triage | [![Stars](https://img.shields.io/github/stars/matthart1983/netscan?style=flat)](https://github.com/matthart1983/netscan/stargazers) |
-| [**Velocitas FIX Engine**](https://github.com/matthart1983/velocitas-fix-engine) | Ultra-low-latency FIX protocol engine — 28 ns serialize, 2.25M msg/s, 29× faster than QuickFIX/J | [![Stars](https://img.shields.io/github/stars/matthart1983/velocitas-fix-engine?style=flat)](https://github.com/matthart1983/velocitas-fix-engine/stargazers) |
-| [**PulseDB**](https://github.com/matthart1983/pulsedb) | Time-series database with columnar storage, Gorilla compression & custom query languages | [![Stars](https://img.shields.io/github/stars/matthart1983/pulsedb?style=flat)](https://github.com/matthart1983/pulsedb/stargazers) |
-| [**Neo**](https://github.com/matthart1983/neo) | Agentic AI dev platform — multi-model routing via OpenRouter | [![Stars](https://img.shields.io/github/stars/matthart1983/neo?style=flat)](https://github.com/matthart1983/neo/stargazers) |
-| [**essh**](https://github.com/matthart1983/essh) | Enterprise SSH client with TUI — fleet management, session recording, audit logging | [![Stars](https://img.shields.io/github/stars/matthart1983/essh?style=flat)](https://github.com/matthart1983/essh/stargazers) |
-| [**PulseLang**](https://github.com/matthart1983/pulselang) | APL-inspired functional array language for time-series analytics | [![Stars](https://img.shields.io/github/stars/matthart1983/pulselang?style=flat)](https://github.com/matthart1983/pulselang/stargazers) |
+| [**diskwatch**](https://github.com/matthart1983/diskwatch) | Single-host, read-only disk diagnostics TUI. Sibling to netwatch and syswatch — devices, volumes, SMART, hot files. | [![Stars](https://img.shields.io/github/stars/matthart1983/diskwatch?style=flat)](https://github.com/matthart1983/diskwatch/stargazers) |
+| [**essh**](https://github.com/matthart1983/essh) | Enhanced SSH client with TUI — manage connections, keys, and sessions. | [![Stars](https://img.shields.io/github/stars/matthart1983/essh?style=flat)](https://github.com/matthart1983/essh/stargazers) |
+| [**Velocitas FIX Engine**](https://github.com/matthart1983/velocitas-fix-engine) | Ultra-low-latency FIX protocol engine — 28 ns serialize, 2.25M msg/s, 29× faster than QuickFIX/J. | [![Stars](https://img.shields.io/github/stars/matthart1983/velocitas-fix-engine?style=flat)](https://github.com/matthart1983/velocitas-fix-engine/stargazers) |
+| [**PulseDB**](https://github.com/matthart1983/pulsedb) | Time-series database with columnar storage, Gorilla compression & custom query languages. | [![Stars](https://img.shields.io/github/stars/matthart1983/pulsedb?style=flat)](https://github.com/matthart1983/pulsedb/stargazers) |
+| [**ticktape**](https://github.com/matthart1983/ticktape) | Deterministic, replicated services on the sequencer architecture — with simulation testing built in. | [![Stars](https://img.shields.io/github/stars/matthart1983/ticktape?style=flat)](https://github.com/matthart1983/ticktape/stargazers) |
+
+<sub>Also in the workshop: [netscan](https://github.com/matthart1983/netscan) · [agentwatch](https://github.com/matthart1983/agentwatch) · [logwatch](https://github.com/matthart1983/logwatch) · [neo](https://github.com/matthart1983/neo) · [PulseLang](https://github.com/matthart1983/pulselang)</sub>
 
 ---
 
 ### 🛠️ Tech
 
-`Rust` · `Go` · `Java` · `Aeron` · `ratatui` · `tokio` · `DPDK` · `FIX Protocol` · `Docker` · `Kubernetes`
+`Rust` · `eBPF` · `Go` · `Java` · `Aeron` · `ratatui` · `tokio` · `DPDK` · `FIX Protocol` · `Docker` · `Kubernetes`
 
 ---
 
@@ -32,6 +33,7 @@ Based in Sydney 🇦🇺 · Currently at Westpac · Background in low-latency tr
 - **Low-latency systems** — zero-allocation, lock-free, SIMD-accelerated
 - **Terminal UIs** — ratatui + crossterm, keyboard-driven tools
 - **Network infrastructure** — packet capture, protocol decoding, deep inspection
+- **Deterministic systems** — sequencers, replicated state machines, simulation testing
 - **Database internals** — columnar storage, compression codecs, query engines
 - **Trading systems** — FIX protocol, order routing, market data
 

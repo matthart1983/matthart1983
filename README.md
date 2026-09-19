@@ -4,6 +4,10 @@
 
 Based in Sydney 🇦🇺 · Currently at Westpac · Background in low-latency trading systems & network infrastructure.
 
+
+![](https://raw.githubusercontent.com/matthart1983/github-stats/generated/overview.svg)
+![](https://raw.githubusercontent.com/matthart1983/github-stats/generated/languages.svg)
+
 ---
 
 ### 🔧 What I Build

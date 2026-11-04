@@ -11,7 +11,7 @@ Systems engineer building terminal diagnostics tools in Rust. Sydney, Australia.
 
 <p align="center"><b><a href="https://github.com/matthart1983/netwatch#install">Install netwatch</a></b></p>
 
-netwatch was [Terminal Trove's Tool of the Week](https://terminaltrove.com/netwatch/), was covered by [Habr](https://habr.com/en/news/1094358/) and was featured in Github Awesome's [35 Self-Hosted Projects on GitHub](https://www.youtube.com/watch?v=TBOtZ3mBktM&t=112s). It ships in Homebrew, conda-forge, nixpkgs, the AUR and Alpine (testing). Across the tools: 120k+ downloads (Nov 2026).
+netwatch was [Terminal Trove's Tool of the Week](https://terminaltrove.com/netwatch/) and was featured in Github Awesome's [35 Self-Hosted Projects on GitHub](https://www.youtube.com/watch?v=TBOtZ3mBktM&t=112s). It ships in Homebrew, conda-forge, nixpkgs, the AUR and Alpine (testing). Across the tools: 120k+ downloads (Nov 2026).
 
 ## Diagnostics tools
 

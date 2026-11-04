@@ -17,12 +17,14 @@ netwatch was [Terminal Trove's Tool of the Week](https://terminaltrove.com/netwa
 
 netwatch, syswatch and diskwatch share one layout and palette.
 
-- **[netwatch](https://github.com/matthart1983/netwatch)**: live capture with L7 decode, TLS 1.3 decryption, eBPF process attribution on Linux and baseline-driven diagnosis. [![stars](https://img.shields.io/github/stars/matthart1983/netwatch?style=flat&label=stars)](https://github.com/matthart1983/netwatch/stargazers)
-- **[syswatch](https://github.com/matthart1983/syswatch)**: CPU, memory, disks, processes, GPU and power on macOS and Linux, with recent history you can scrub. [![stars](https://img.shields.io/github/stars/matthart1983/syswatch?style=flat&label=stars)](https://github.com/matthart1983/syswatch/stargazers)
-- **[diskwatch](https://github.com/matthart1983/diskwatch)**: disk activity, capacity, health and busy files in one terminal. Read-only, no config. [![stars](https://img.shields.io/github/stars/matthart1983/diskwatch?style=flat&label=stars)](https://github.com/matthart1983/diskwatch/stargazers)
-- **[kernwatch](https://github.com/matthart1983/kernwatch)**: CPU contention, scheduling, memory pressure and block IO on Linux, with stack profiles and incident reports. [![stars](https://img.shields.io/github/stars/matthart1983/kernwatch?style=flat&label=stars)](https://github.com/matthart1983/kernwatch/stargazers)
-- **[essh](https://github.com/matthart1983/essh)**: remote shells that survive connection drops, built on OpenSSH and tmux. [![stars](https://img.shields.io/github/stars/matthart1983/essh?style=flat&label=stars)](https://github.com/matthart1983/essh/stargazers)
-- **[netscan](https://github.com/matthart1983/netscan)**: an nmap workflow with target inventory, saved profiles, live results and scan diffs. *Paused.* [![stars](https://img.shields.io/github/stars/matthart1983/netscan?style=flat&label=stars)](https://github.com/matthart1983/netscan/stargazers)
+| Project | What | Stars |
+|---------|------|-------|
+| [**netwatch**](https://github.com/matthart1983/netwatch) | Live capture with L7 decode, TLS 1.3 decryption, eBPF process attribution on Linux and baseline-driven diagnosis. | [![stars](https://img.shields.io/github/stars/matthart1983/netwatch?style=flat&label=stars)](https://github.com/matthart1983/netwatch/stargazers) |
+| [**syswatch**](https://github.com/matthart1983/syswatch) | CPU, memory, disks, processes, GPU and power on macOS and Linux, with recent history you can scrub. | [![stars](https://img.shields.io/github/stars/matthart1983/syswatch?style=flat&label=stars)](https://github.com/matthart1983/syswatch/stargazers) |
+| [**diskwatch**](https://github.com/matthart1983/diskwatch) | Disk activity, capacity, health and busy files in one terminal. Read-only, no config. | [![stars](https://img.shields.io/github/stars/matthart1983/diskwatch?style=flat&label=stars)](https://github.com/matthart1983/diskwatch/stargazers) |
+| [**kernwatch**](https://github.com/matthart1983/kernwatch) | CPU contention, scheduling, memory pressure and block IO on Linux, with stack profiles and incident reports. | [![stars](https://img.shields.io/github/stars/matthart1983/kernwatch?style=flat&label=stars)](https://github.com/matthart1983/kernwatch/stargazers) |
+| [**essh**](https://github.com/matthart1983/essh) | Remote shells that survive connection drops, built on OpenSSH and tmux. | [![stars](https://img.shields.io/github/stars/matthart1983/essh?style=flat&label=stars)](https://github.com/matthart1983/essh/stargazers) |
+| [**netscan**](https://github.com/matthart1983/netscan) | An nmap workflow with target inventory, saved profiles, live results and scan diffs. *Paused.* | [![stars](https://img.shields.io/github/stars/matthart1983/netscan?style=flat&label=stars)](https://github.com/matthart1983/netscan/stargazers) |
 
 ## Low-latency work
 

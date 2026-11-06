@@ -1,42 +1,53 @@
 # Matt Hartley
 
-Systems engineer building terminal diagnostics tools in Rust. Sydney, Australia.
-[netwatchlabs.com](https://netwatchlabs.com)
+I build Rust tools for investigating networks, hosts, disks and the Linux kernel.
+My focus is making system behaviour easier to inspect from the terminal.
+
+Sydney, Australia · [NetWatch Labs](https://netwatchlabs.com) · [LinkedIn](https://www.linkedin.com/in/matt-hartley-b5b28b40/)
+
+## Start with netwatch
+
+[**netwatch**](https://github.com/matthart1983/netwatch) brings network traffic, connections and process activity into one terminal.
 
 <p align="center">
-  <a href="https://github.com/matthart1983/netwatch">
-    <img src="assets/netwatch.gif" width="800" alt="netwatch's dense view: a mirrored braille throughput graph with download above the axis and upload below, per-interface rates with sparklines, four-hop latency budgets, and a connection table with the selected socket's kernel TCP state">
+  <a href="https://raw.githubusercontent.com/matthart1983/matthart1983/main/assets/netwatch.gif">
+    <img src="assets/netwatch.gif" width="800" alt="Netwatch demo showing download and upload throughput, interface rates, hop latency and connections grouped by process.">
   </a>
 </p>
 
-<p align="center"><b><a href="https://github.com/matthart1983/netwatch#install">Install netwatch</a></b></p>
+<p align="center"><em>Demo traffic in the dense view: throughput above, interfaces and hop latency in the middle, connections below. Click to view at full size.</em></p>
 
-netwatch was [Terminal Trove's Tool of the Week](https://terminaltrove.com/netwatch/) and was featured in Github Awesome's [35 Self-Hosted Projects on GitHub](https://www.youtube.com/watch?v=TBOtZ3mBktM&t=112s). It ships in Homebrew, conda-forge, nixpkgs, the AUR and Alpine (testing). Across the tools: 120k+ downloads (Nov 2026).
+<p align="center"><b><a href="https://github.com/matthart1983/netwatch#install">Install netwatch</a></b> · <a href="https://github.com/matthart1983/netwatch#run">Run and explore</a></p>
 
-## Diagnostics tools
+[Terminal Trove's Tool of the Week](https://terminaltrove.com/tool-of-the-week/) · 14 April 2026.
 
-netwatch, syswatch and diskwatch share one layout and palette.
+## Choose a diagnostics tool
 
-| Project | What | Stars |
-|---------|------|-------|
-| [**netwatch**](https://github.com/matthart1983/netwatch) | Live capture with L7 decode, TLS 1.3 decryption, eBPF process attribution on Linux and baseline-driven diagnosis. | [![stars](https://img.shields.io/github/stars/matthart1983/netwatch?style=flat&label=stars)](https://github.com/matthart1983/netwatch/stargazers) |
-| [**syswatch**](https://github.com/matthart1983/syswatch) | CPU, memory, disks, processes, GPU and power on macOS and Linux, with recent history you can scrub. | [![stars](https://img.shields.io/github/stars/matthart1983/syswatch?style=flat&label=stars)](https://github.com/matthart1983/syswatch/stargazers) |
-| [**diskwatch**](https://github.com/matthart1983/diskwatch) | Disk activity, capacity, health and busy files in one terminal. Read-only, no config. | [![stars](https://img.shields.io/github/stars/matthart1983/diskwatch?style=flat&label=stars)](https://github.com/matthart1983/diskwatch/stargazers) |
-| [**kernwatch**](https://github.com/matthart1983/kernwatch) | CPU contention, scheduling, memory pressure and block IO on Linux, with stack profiles and incident reports. | [![stars](https://img.shields.io/github/stars/matthart1983/kernwatch?style=flat&label=stars)](https://github.com/matthart1983/kernwatch/stargazers) |
-| [**essh**](https://github.com/matthart1983/essh) | Remote shells that survive connection drops, built on OpenSSH and tmux. | [![stars](https://img.shields.io/github/stars/matthart1983/essh?style=flat&label=stars)](https://github.com/matthart1983/essh/stargazers) |
-| [**netscan**](https://github.com/matthart1983/netscan) | An nmap workflow with target inventory, saved profiles, live results and scan diffs. *Paused.* | [![stars](https://img.shields.io/github/stars/matthart1983/netscan?style=flat&label=stars)](https://github.com/matthart1983/netscan/stargazers) |
+Start with the part of the system you need to investigate. Netwatch, syswatch and diskwatch share a terminal layout and palette, making it familiar to move between them.
 
-## Low-latency work
+| Tool | What to use it for |
+|---|---|
+| [**netwatch**](https://github.com/matthart1983/netwatch) | Inspect traffic, connections and network behaviour. |
+| [**syswatch**](https://github.com/matthart1983/syswatch) | Investigate resource use and revisit recent system activity. |
+| [**diskwatch**](https://github.com/matthart1983/diskwatch) | Inspect disk activity, capacity, health and busy files. |
+| [**kernwatch**](https://github.com/matthart1983/kernwatch) | Investigate Linux scheduling, memory pressure and block I/O. |
 
-- **[nanofix](https://github.com/matthart1983/nanofix)**: a zero-allocation FIX engine, benchmarked on Apple Silicon at 29× faster serialisation than QuickFIX/J ([methodology](https://github.com/matthart1983/nanofix/blob/main/BENCHMARKS.md)).
-- **[ticktape](https://github.com/matthart1983/ticktape)**: a framework for deterministic, replicated services on the sequencer architecture, with simulation testing built in. *Paused.*
+Each project's documentation explains its platform support, permissions and measurement limits.
 
-## Also
+## Engineering notes
 
-[soundwatch](https://github.com/matthart1983/soundwatch): audio diagnostics for macOS and Linux ·
-[agentwatch](https://github.com/matthart1983/agentwatch): run and watch AI agent workflows *(paused)* ·
-[logwatch](https://github.com/matthart1983/logwatch): log templating and novel-pattern detection *(paused)*
+- [**Process attribution: identity, freshness and coverage**](https://github.com/matthart1983/netwatch/blob/main/docs/attribution.md) — how netwatch checks ownership evidence, handles stale observations and reports what remains unknown.
+- [**Designing netwatch's terminal views**](https://github.com/matthart1983/netwatch/blob/main/docs/DESIGN-0.30.md) — the version 0.30 design document covering layout, visual hierarchy and dense and lite views.
 
-`Rust` · `ratatui` · `tokio` · `eBPF` · `FIX` · `Aeron`
+## Other selected work
 
-<sub>Paused: no commits in the last 90 days.</sub>
+- [**essh**](https://github.com/matthart1983/essh) — remote shells that survive connection drops, built on OpenSSH and tmux.
+- [**nanofix**](https://github.com/matthart1983/nanofix) — a Rust FIX engine. NewOrderSingle serialisation benchmarked at 28.7× faster than QuickFIX/J on Apple Silicon; [results and methodology](https://github.com/matthart1983/nanofix/blob/main/BENCHMARKS.md).
+
+[Browse all projects](https://github.com/matthart1983?tab=repositories).
+
+## Get in touch
+
+For netwatch questions and ideas, use [Discussions](https://github.com/matthart1983/netwatch/discussions).
+For professional conversations, connect on [LinkedIn](https://www.linkedin.com/in/matt-hartley-b5b28b40/).
+

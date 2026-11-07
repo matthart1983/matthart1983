@@ -21,7 +21,11 @@ Sydney, Australia · [NetWatch Labs](https://netwatchlabs.com) · [LinkedIn](htt
 
 <p align="center">
   <a href="https://raw.githubusercontent.com/matthart1983/matthart1983/main/assets/netwatch.gif">
-    <img src="assets/netwatch.gif" width="800" alt="netwatch demo showing download and upload throughput, interface rates, hop latency and connections grouped by process.">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="assets/netwatch.gif">
+      <source media="(prefers-color-scheme: light)" srcset="assets/netwatch-light.gif">
+      <img src="assets/netwatch-light.gif" width="800" alt="netwatch demo showing download and upload throughput, interface rates, hop latency and connections grouped by process.">
+    </picture>
   </a>
 </p>
 

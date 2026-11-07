@@ -3,7 +3,7 @@
     <picture>
       <source media="(prefers-color-scheme: dark)" srcset="assets/terrain-dark.svg">
       <source media="(prefers-color-scheme: light)" srcset="assets/terrain-light.svg">
-      <img src="assets/terrain-light.svg" width="100%" alt="Animated banner of netwatch's throughput graph drawn as a terrain of braille dots, one ridge per process. Download rises in green above a glass plane and upload hangs below it in blue. Callouts name the remote behind each burst, such as cargo downloading from static.crates.io. Sample data.">
+      <img src="assets/terrain-light.svg" width="100%" alt="Animated illustration of throughput by process, drawn as a terrain of braille dots with one ridge per process. It is not a netwatch screen. Download rises in green above a glass plane and upload hangs below it in blue. Callouts name the remote behind each burst, such as cargo downloading from static.crates.io. Sample data.">
     </picture>
   </a>
 </p>
@@ -20,16 +20,16 @@ Sydney, Australia · [NetWatch Labs](https://netwatchlabs.com) · [LinkedIn](htt
 <p align="center"><b><a href="https://github.com/matthart1983/netwatch#install">Install netwatch</a></b> · <a href="https://github.com/matthart1983/netwatch#run">Run and explore</a></p>
 
 <p align="center">
-  <a href="https://raw.githubusercontent.com/matthart1983/matthart1983/main/assets/netwatch.gif">
+  <a href="https://github.com/matthart1983/netwatch#readme">
     <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="assets/netwatch.gif">
-      <source media="(prefers-color-scheme: light)" srcset="assets/netwatch-light.gif">
-      <img src="assets/netwatch-light.gif" width="800" alt="netwatch demo showing download and upload throughput, interface rates, hop latency and connections grouped by process.">
+      <source media="(prefers-color-scheme: dark)" srcset="assets/netwatch.png">
+      <source media="(prefers-color-scheme: light)" srcset="assets/netwatch-light.png">
+      <img src="assets/netwatch-light.png" width="800" alt="netwatch's dense view: a mirrored throughput graph with download above the axis and upload below, interface rates, hop latency budgets, and connections grouped by process with the selected socket's TCP detail.">
     </picture>
   </a>
 </p>
 
-<p align="center"><em>Demo traffic in the dense view: throughput above, interfaces and hop latency in the middle, connections below. Click to view at full size.</em></p>
+<p align="center"><em>Demo traffic in the dense view: throughput above, interfaces and hop latency in the middle, connections below. Click to watch it run.</em></p>
 
 ## Choose a diagnostics tool
 

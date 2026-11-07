@@ -1,12 +1,14 @@
+<!-- Banner, switched off for now. Remove this comment wrapper to show it again.
 <p align="center">
   <a href="https://www.netwatchlabs.com">
-    <!-- <picture>
+    <picture>
       <source media="(prefers-color-scheme: dark)" srcset="assets/terrain-dark.svg">
       <source media="(prefers-color-scheme: light)" srcset="assets/terrain-light.svg">
       <img src="assets/terrain-light.svg" width="100%" alt="Animated illustration of throughput by process, drawn as a terrain of braille dots with one ridge per process. It is not a netwatch screen. Download rises in green above a glass plane and upload hangs below it in blue. Callouts name the remote behind each burst, such as cargo downloading from static.crates.io. Sample data.">
-    </picture> -->
+    </picture>
   </a>
 </p>
+-->
 
 I build Rust tools for investigating networks, hosts, disks and the Linux kernel.
 My focus is making system behaviour easier to inspect from the terminal.

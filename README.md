@@ -3,7 +3,7 @@
     <!-- <picture>
       <source media="(prefers-color-scheme: dark)" srcset="assets/terrain-dark.svg">
       <source media="(prefers-color-scheme: light)" srcset="assets/terrain-light.svg">
-      <img src="assets/terrain-light.svg" width="100%" alt="Animated banner of netwatch's throughput graph drawn as a terrain of braille dots, one ridge per process. Download rises in green above a glass plane and upload hangs below it in blue. Callouts name the remote behind each burst, such as cargo downloading from static.crates.io. Sample data.">
+      <img src="assets/terrain-light.svg" width="100%" alt="Animated illustration of throughput by process, drawn as a terrain of braille dots with one ridge per process. It is not a netwatch screen. Download rises in green above a glass plane and upload hangs below it in blue. Callouts name the remote behind each burst, such as cargo downloading from static.crates.io. Sample data.">
     </picture> -->
   </a>
 </p>

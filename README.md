@@ -1,3 +1,9 @@
+<p align="center">
+  <a href="https://www.netwatchlabs.com">
+    <img src="assets/terrain.svg" width="100%" alt="Animated banner of netwatch's throughput graph drawn as a terrain of braille dots, one ridge per process. Download rises in green above a glass plane and upload hangs below it in cyan. Callouts name the remote behind each burst, such as cargo downloading from static.crates.io. Sample data.">
+  </a>
+</p>
+
 I build Rust tools for investigating networks, hosts, disks and the Linux kernel.
 My focus is making system behaviour easier to inspect from the terminal.
 

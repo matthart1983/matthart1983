@@ -1,5 +1,3 @@
-# Matt Hartley
-
 I build Rust tools for investigating networks, hosts, disks and the Linux kernel.
 My focus is making system behaviour easier to inspect from the terminal.
 
@@ -7,23 +5,21 @@ Sydney, Australia · [NetWatch Labs](https://netwatchlabs.com) · [LinkedIn](htt
 
 ## Start with netwatch
 
-[**netwatch**](https://github.com/matthart1983/netwatch) brings network traffic, connections and process activity into one terminal.
+[**netwatch**](https://github.com/matthart1983/netwatch) brings network traffic, connections and process activity into one terminal. It is packaged in Homebrew, conda-forge, nixpkgs, the AUR and Scoop, and was [Terminal Trove's Tool of the Week](https://terminaltrove.com/blog/terminal-trove-april-2026-wrap-up/) in April 2026.
+
+<p align="center"><b><a href="https://github.com/matthart1983/netwatch#install">Install netwatch</a></b> · <a href="https://github.com/matthart1983/netwatch#run">Run and explore</a></p>
 
 <p align="center">
   <a href="https://raw.githubusercontent.com/matthart1983/matthart1983/main/assets/netwatch.gif">
-    <img src="assets/netwatch.gif" width="800" alt="Netwatch demo showing download and upload throughput, interface rates, hop latency and connections grouped by process.">
+    <img src="assets/netwatch.gif" width="800" alt="netwatch demo showing download and upload throughput, interface rates, hop latency and connections grouped by process.">
   </a>
 </p>
 
 <p align="center"><em>Demo traffic in the dense view: throughput above, interfaces and hop latency in the middle, connections below. Click to view at full size.</em></p>
 
-<p align="center"><b><a href="https://github.com/matthart1983/netwatch#install">Install netwatch</a></b> · <a href="https://github.com/matthart1983/netwatch#run">Run and explore</a></p>
-
-[Terminal Trove's Tool of the Week](https://terminaltrove.com/tool-of-the-week/) · 14 April 2026.
-
 ## Choose a diagnostics tool
 
-Start with the part of the system you need to investigate. Netwatch, syswatch and diskwatch share a terminal layout and palette, making it familiar to move between them.
+Start with the part of the system you need to investigate. netwatch, syswatch and diskwatch share a terminal layout and palette.
 
 | Tool | What to use it for |
 |---|---|
@@ -31,8 +27,6 @@ Start with the part of the system you need to investigate. Netwatch, syswatch an
 | [**syswatch**](https://github.com/matthart1983/syswatch) | Investigate resource use and revisit recent system activity. |
 | [**diskwatch**](https://github.com/matthart1983/diskwatch) | Inspect disk activity, capacity, health and busy files. |
 | [**kernwatch**](https://github.com/matthart1983/kernwatch) | Investigate Linux scheduling, memory pressure and block I/O. |
-
-Each project's documentation explains its platform support, permissions and measurement limits.
 
 ## Engineering notes
 

@@ -1,7 +1,10 @@
-"""Generate assets/terrain.svg for the GitHub profile README.
+"""Generate assets/terrain-{dark,light}.svg for the GitHub profile README.
 
-An animated-SVG take on the netwatchlabs.com hero: netwatch's mirrored
-throughput graph as a braille-dot terrain, one ridge per process. GitHub
+A short decorative strip based on the netwatchlabs.com hero: a mirrored
+throughput graph as a braille-dot terrain, a few ridges deep, with the
+NetWatch Labs wordmark on the left. It is decoration, not a screenshot,
+so it carries no process names, rates or callouts; the real demo GIF
+below it in the README is the evidence. GitHub
 renders README images without scripts, so everything is precomputed and
 driven by CSS keyframes:
 
@@ -11,10 +14,8 @@ driven by CSS keyframes:
   step with `steps()` like the TUI redraws;
 - the data loops every LOOP samples and each ridge holds two copies, so the
   seam is invisible;
-- callouts sit outside the scaled ridges so their text stays full size,
-  and each has its own opacity keyframes;
-- narrow images (phones) drop the text; prefers-reduced-motion holds the
-  first frame, which already shows a callout.
+- narrow images (phones) drop the tagline; prefers-reduced-motion holds
+  the first frame.
 
 Two files come out, one per GitHub theme, using GitHub's own colours:
 the code-block ground, its text colours, and greens (download) and blues
@@ -48,17 +49,16 @@ MONO = "ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monos
 
 TICK = 0.125
 LOOP = 320          # samples per loop (40 s)
-SVIS = 136          # samples visible per ridge
-L = 14              # dot rows each side of the glass
+SVIS = 124          # samples visible per ridge
+L = 8               # dot rows each side of the glass
 VMAX = 100
 DX = 5.6            # px per sample at the front
-SLOPE = 0.11        # the time axis drops to the right
+SLOPE = 0.03        # the time axis drops to the right
 DY, GY, Y0 = 4.0, 2.6, 3.4
 R_LIT, R_OFF = 2.0, 0.85
 CELL = 4 * DY + GY  # braille cell height
-DEPTH = 34          # px between ridges at the front
-KSTEP = 0.055       # scale lost per ridge going back
-FONT = 15
+DEPTH = 21          # px between ridges at the front
+KSTEP = 0.06        # scale lost per ridge going back
 
 rnd = random.Random(7)
 
@@ -76,13 +76,14 @@ def lit(v):
 
 # --- synthetic traffic, front ridge first -------------------------------
 BURSTS = {
-    # name: (centre sample, upload?, lo, hi, conns, peer)
-    "cargo": (100, False, 70, 90, 8, "static.crates.io:443"),
-    "syncthing": (205, True, 11, 16, 1, "192.168.1.20:22000"),
-    "dockerd": (285, False, 80, 96, 3, "registry-1.docker.io:443"),
+    # series: (centre sample, upload?, lo, hi)
+    "cargo": (82, False, 70, 90),
+    "syncthing": (205, True, 11, 16),
+    "dockerd": (285, False, 80, 96),
 }
 BLEN = 30
-PROCS = ["firefox", "mpv", "cargo", "zoom", "syncthing", "dockerd", "ssh"]
+# Series shapes, front ridge first. The names only pick a traffic shape; none is drawn.
+PROCS = ["firefox", "mpv", "cargo", "syncthing", "dockerd"]
 P = len(PROCS)
 
 
@@ -109,7 +110,7 @@ def series(name):
             rx[n] = 0.4 if rnd.random() < 0.05 else 0.0
     peak = 0.0
     if name in BURSTS:
-        c, up, lo, hi, _, _ = BURSTS[name]
+        c, up, lo, hi = BURSTS[name]
         n0 = c - BLEN // 2
         for j in range(BLEN):
             k = min(1, j / 3, (BLEN - j) / 3)
@@ -160,33 +161,6 @@ def dots_path(points):
     return "M0 0" + "".join(out)
 
 
-def text_w(s, size):
-    return len(s) * size * 0.6
-
-
-# Callout layout, in unscaled px relative to the burst point.
-CO_FONT, CO_H, CO_GAP = 14, 28, 22
-
-
-def callout_label(name, t=None):
-    c, up, _, _, conns, peer = BURSTS[name]
-    peak = DATA[name][2]
-    arrow = "↑" if up else "↓"
-    t = t or THEMES["dark"]
-    return [(name, t["text"], "600"), (f" {arrow}{peak:.0f} Mb/s", (t["tx"] if up else t["rx"])[2], "400"),
-            (f" · {conns} conn{'s' if conns > 1 else ''} →", t["muted"], "400"), (f" {peer}", t["text"], "400")]
-
-
-def burst_point(name, i):
-    """Unscaled offset of the burst top at window position i, from the ridge origin."""
-    r = PROCS.index(name)
-    c, up, *_ = BURSTS[name]
-    n = lit(DATA[name][2])
-    k = scale(r)
-    x, y = pt(i, (y_of(n - 1) + 5) if up else -(y_of(n - 1) + 5))
-    return k * x, k * y, up
-
-
 # --- bounds -----------------------------------------------------------------
 xs, ys = [], []
 for r, name in enumerate(PROCS):
@@ -199,21 +173,11 @@ for r, name in enumerate(PROCS):
         x, y = pt(i)
         xs.append(ox + k * x)
         ys += [oy + k * (y - up_h), oy + k * (y + dn_h)]
-    lx, ly = pt(SVIS + 1)
-    xs.append(ox + k * lx + text_w(name, FONT))
-for name in BURSTS:
-    r = PROCS.index(name)
-    ox, oy = origin(r)
-    w = text_w("".join(t for t, *_ in callout_label(name)), CO_FONT) + 24
-    for i in (SVIS * 0.5, SVIS - 8):
-        bx, by, up = burst_point(name, i)
-        xs += [ox + bx - w / 2, ox + bx + w / 2]
-        ys.append(oy + by + (CO_GAP + CO_H if up else -(CO_GAP + CO_H)))
 
-PAD_X, PAD_TOP, LEGEND = 40, 26, 56
-OX, OY = PAD_X - min(xs), PAD_TOP - min(ys)
-VW = round(max(xs) - min(xs) + 2 * PAD_X)
-VH = round(max(ys) - min(ys) + PAD_TOP + LEGEND)
+PAD_X, PAD_Y, MARK_W = 36, 22, 250   # MARK_W: column kept clear for the wordmark
+OX, OY = PAD_X + MARK_W - min(xs), PAD_Y - min(ys)
+VW = round(max(xs) - min(xs) + 2 * PAD_X + MARK_W)
+VH = round(max(ys) - min(ys) + 2 * PAD_Y)
 
 dur = LOOP * TICK
 
@@ -232,21 +196,17 @@ def render(t):
     add = svg.append
     add(f'<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" '
         f'viewBox="0 0 {VW} {VH}" width="{VW}" height="{VH}" role="img" '
-        f'aria-label="netwatch throughput by process, drawn as a terrain of braille dots. Sample data.">')
-    scrolls = "".join(
-        f"@keyframes s{r}{{to{{transform:translate({-LOOP * DX * scale(r):.1f}px,{-LOOP * DX * SLOPE * scale(r):.1f}px)}}}}"
-        for r in range(P))
+        f'aria-label="NetWatch Labs. Decorative terrain of braille dots.">')
     add(f"""<style>
 .s{{animation:scroll {dur:g}s steps({LOOP}) infinite}}
 @keyframes scroll{{to{{transform:translate({-LOOP * DX:.1f}px,{-LOOP * DX * SLOPE:.1f}px)}}}}
-{scrolls}
 .b{{animation:boot .8s cubic-bezier(.2,.7,.2,1) both}}
 @keyframes boot{{from{{opacity:0;transform:translateY(-14px)}}}}
 .lg{{animation:fade 1s .8s both}}
 @keyframes fade{{from{{opacity:0}}}}
 text{{font-family:{MONO}}}
-@media (max-width:600px){{.lab,.co,.leg{{display:none}}}}
-@media (prefers-reduced-motion:reduce){{.s,.b,.lg,.co,.cs{{animation:none!important}}}}
+@media (max-width:600px){{.tag{{display:none}}}}
+@media (prefers-reduced-motion:reduce){{.s,.b,.lg{{animation:none!important}}}}
 </style>""")
     add("<defs>")
     add(f'<pattern id="lat" patternUnits="userSpaceOnUse" x="{-DX / 2:.2f}" y="0" width="{DX}" height="{CELL:.2f}" '
@@ -305,53 +265,10 @@ text{{font-family:{MONO}}}
         add(f'<use href="#{gid}" xlink:href="#{gid}" x="{LOOP * DX:.1f}" y="{LOOP * DX * SLOPE:.1f}"/>')
         add("</g></g></g>")
         add("</g></g>")
-        lx, ly = pt(SVIS + 1)
-        add(f'<text class="lab" x="{OX + ox + k * lx:.1f}" y="{OY + oy + k * ly + 5:.1f}" font-size="{FONT}" '
-            f'fill="{t["muted"]}" fill-opacity="{1 - 0.06 * r:.2f}">{name}</text>')
 
-    for name in BURSTS:
-        r = PROCS.index(name)
-        ox, oy = origin(r)
-        c, up, *_ = BURSTS[name]
-        label = callout_label(name, t)
-        bw = text_w("".join(x for x, *_ in label), CO_FONT) + 24
-        col = (t["tx"] if up else t["rx"])[2]
-        tspans = "".join(f'<tspan fill="{cl}" font-weight="{w}">{x}</tspan>' for x, cl, w in label)
-        for copy in (0, 1):
-            ci = c + copy * LOOP
-            # visible while the burst's middle is in the right half of the window
-            lo, hi = max(0, ci - SVIS + 8), min(LOOP, ci - SVIS * 0.5)
-            if lo >= hi:
-                continue
-            px, py, _ = burst_point(name, ci)
-            by = py + CO_GAP if up else py - CO_GAP - CO_H
-            ly1, ly2 = (py, py + CO_GAP) if up else (py - CO_GAP, py)
-            fade = 1.5
-            if lo == 0:
-                frames = [(0, 1), (hi - fade, 1), (hi, 0), (LOOP, 0)]
-            elif hi == LOOP:
-                frames = [(0, 0), (lo, 0), (lo + fade, 1), (LOOP, 1)]
-            else:
-                frames = [(0, 0), (lo, 0), (lo + fade, 1), (hi - fade, 1), (hi, 0), (LOOP, 0)]
-            kf = f"co{r}{copy}"
-            stops = "".join(f"{pct(s_)}{{opacity:{o}}}" for s_, o in frames)
-            add(f'<style>@keyframes {kf}{{{stops}}}</style>'
-                f'<g transform="translate({OX + ox:.1f} {OY + oy:.1f})">'
-                f'<g class="cs" style="animation:s{r} {dur:g}s steps({LOOP}) infinite">'
-                f'<g class="co" opacity="{frames[0][1]}" style="animation:{kf} {dur:g}s linear infinite">'
-                f'<line x1="{px:.1f}" y1="{ly1:.1f}" x2="{px:.1f}" y2="{ly2:.1f}" stroke="{col}"/>'
-                f'<circle cx="{px:.1f}" cy="{py:.1f}" r="3" fill="{col}"/>'
-                f'<rect x="{px - bw / 2:.1f}" y="{by:.1f}" width="{bw:.1f}" height="{CO_H}" rx="6" fill="{t["panel"]}" '
-                f'stroke="{t["border"]}"/>'
-                f'<text x="{px:.1f}" y="{by + 19:.1f}" font-size="{CO_FONT}" text-anchor="middle" xml:space="preserve">{tspans}</text>'
-                "</g></g></g>")
-
-    ly = VH - 22
-    add(f'<g class="lg leg" font-size="14">'
-        f'<circle cx="{PAD_X + 4}" cy="{ly - 5}" r="4" fill="{t["rx"][2]}"/><text x="{PAD_X + 14}" y="{ly}" fill="{t["muted"]}">download</text>'
-        f'<circle cx="{PAD_X + 118}" cy="{ly - 5}" r="4" fill="{t["tx"][2]}"/><text x="{PAD_X + 128}" y="{ly}" fill="{t["muted"]}">upload</text>'
-        f'<text x="{VW - PAD_X}" y="{ly}" fill="{t["muted"]}" text-anchor="end">netwatch · throughput by process · sample data</text>'
-        "</g>")
+    my = VH / 2
+    add(f'<g class="lg"><text x="{PAD_X}" y="{my + 2:.1f}" font-size="24" font-weight="600" fill="{t["text"]}">NetWatch Labs</text>'
+        f'<text class="tag" x="{PAD_X}" y="{my + 26:.1f}" font-size="14" fill="{t["muted"]}">terminal diagnostics in Rust</text></g>')
     add("</svg>")
     return "\n".join(svg) + "\n"
 
